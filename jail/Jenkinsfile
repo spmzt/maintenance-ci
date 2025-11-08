@@ -1,0 +1,77 @@
+pipeline {
+	agent {
+		label 'host && freebsd'
+	}
+
+	parameters {
+		string(name: 'branch', defaultValue: 'main',
+				description: 'Set your git branch')
+		string(name: 'basejail', defaultValue: '/usr/jails/basejail',
+				description: 'Set it to your base jail directory')
+		string(name: 'zfsds', defaultValue: 'tank/jails',
+				description: 'Set it to the zfs dataset that containes your jails')
+		string(name: 'jobs', defaultValue: '24',
+				description: 'Set to your desired concurrent jobs')
+		string(name: 'giturl', defaultValue: 'git.spmzt.net:freebsd/src.git',
+				description: 'Set to your FreeBSD-src repository')
+	}
+	stages {
+		stage("pull") {
+		steps {
+			dir("${env.SRC}") {
+				checkout scmGit(branches: [[name: "${params.branch}"]],
+				  extensions: [], userRemoteConfigs: [[
+						credentialsId: 'git-ssh-key',
+						url: "${params.giturl}"]
+					])
+				}
+			}
+		}
+		stage("buildworld") {
+			steps {
+				sh "mdo make -j${params.jobs} buildworld"
+			}
+		}
+		stage("installworld") {
+			stages {
+				stage("snapshot") {
+					steps {
+						sh "mdo zfs snapshot -r ${params.zfsds}@`date -I`-${currentBuild.number}"
+					}
+				}
+				stage("base") {
+					steps {
+						sh "mdo etcupdate -p -D ${params.basejail}"
+						sh "mdo make installworld DESTDIR=${params.basejail}"
+						sh "mdo etcupdate -B -D ${params.basejail}"
+					}
+				}
+				stage("jails") {
+					steps {
+						sh '''for dir in `jls --libxo json | jq -r '."jail-information".jail.[].path'`;
+						do mdo etcupdate -p -D $dir;
+						mdo make installworld DESTDIR=$dir;
+						mdo etcupdate -B -D $dir;
+						done'''
+					}
+				}
+			}
+		}
+		stage("packages") {
+			stages {
+				stage("base") {
+					steps {
+						sh "mdo pkg -c ${params.basejail} upgrade -y"
+					}
+				}
+				stage("jails") {
+					steps {
+						sh """for jid in `jls --libxo json | jq '."jail-information".jail.[].jid'`;
+						do mdo pkg -j $jid upgrade -y
+						done"""
+					}
+				}
+			}
+		}
+	}
+}

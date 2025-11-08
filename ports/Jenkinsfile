@@ -1,0 +1,21 @@
+pipeline {
+	agent {
+		label 'host && freebsd'
+	}
+
+	parameters {
+		string(name: 'jobs', defaultValue: '4',
+				description: 'Set to your desired concurrent jobs')
+	}
+	stages {
+		stage("poudriere") {
+			stages {
+				stage("bulk") {
+					steps {
+						sh "mdo poudriere bulk -jFreeBSD:16:amd64 -b latest -S -J${params.jobs}:4 -f ports/all-ports"
+					}
+				}
+			}
+		}
+	}
+}

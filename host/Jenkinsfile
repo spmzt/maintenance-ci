@@ -1,0 +1,58 @@
+pipeline {
+	agent {
+		label 'host && freebsd'
+	}
+
+	parameters {
+		booleanParam(name: 'skip_pull', defaultValue: false,
+				description: 'Set to true to skip the git pull stage')
+	}
+	stages {
+		stage("pull") {
+			when { expression { params.skip_pull != true } }
+			steps {
+				sh 'mdo git -C /usr/src pull'
+			}
+		}
+		stage("build") {
+			stages {
+				stage("world") {
+					steps {
+						sh 'mdo make -C /usr/src buildworld'
+					}
+				}
+				stage("kernel") {
+					steps {
+						sh 'mdo make -C /usr/src buildkernel'
+					}
+				}
+			}
+		}
+		stage("installworld") {
+			stages {
+				stage("snapshot") {
+					steps {
+						sh "mdo bectl create `date -I`-${currentBuild.number}"
+					}
+				}
+				stage("install") {
+					steps {
+						sh 'mdo etcupdate -p'
+						sh 'mdo make -C /usr/src installworld'
+						sh 'mdo etcupdate -B'
+					}
+				}
+			}
+		}
+		stage("kernel") {
+			steps {
+				sh 'mdo make -C /usr/src installkernel'
+			}
+		}
+		stage("packages") {
+			steps {
+				sh 'mdo pkg upgrade -y'
+			}
+		}
+	}
+}
