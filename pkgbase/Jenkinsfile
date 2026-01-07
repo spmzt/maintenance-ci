@@ -1,0 +1,25 @@
+pipeline {
+	agent {
+		label 'host && freebsd'
+	}
+
+	parameters {
+		booleanParam(name: 'skip_pull', defaultValue: false,
+				description: 'Set to true to skip the git pull stage')
+		string(name: 'jobs', defaultValue: '24',
+				description: 'Set to your desired concurrent jobs')
+	}
+	stages {
+		stage("pull") {
+			when { expression { params.skip_pull != true } }
+			steps {
+				sh 'mdo git -C /usr/src pull'
+			}
+		}
+		stage("poudriere") {
+			steps {
+				sh 'mdo poudriere jail -u -jFreeBSD:16:amd64 -K GENERIC-NODEBUG -B -b'
+			}
+		}
+	}
+}
