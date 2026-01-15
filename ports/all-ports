@@ -324,6 +324,7 @@ sysutils/inotify-tools
 sysutils/lsblk
 sysutils/lscpu
 sysutils/neofetch
+sysutils/node_exporter
 sysutils/parallel
 sysutils/pass-otp
 sysutils/patchelf
