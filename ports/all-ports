@@ -183,6 +183,7 @@ net-mgmt/ettercap
 net-mgmt/grepcidr
 net-mgmt/iftop
 net-mgmt/ipcalc
+net-mgmt/nfdump
 net-mgmt/prometheus2
 net-mgmt/py-gstat_exporter
 net-mgmt/rtrlib
