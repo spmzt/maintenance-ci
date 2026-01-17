@@ -135,8 +135,6 @@ java/openjdk8-jre
 lang/dotnet-host
 lang/gcc
 lang/go
-lang/go122
-lang/go123
 lang/python3
 lang/python312
 lang/rust
