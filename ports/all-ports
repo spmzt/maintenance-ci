@@ -82,6 +82,7 @@ devel/py-pipenv
 devel/py-pipx
 devel/subversion
 devel/universal-ctags
+devel/valgrind
 dns/bind-tools
 dns/bind920
 dns/unbound
