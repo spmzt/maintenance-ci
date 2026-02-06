@@ -107,7 +107,6 @@ filesystems/lkl
 filesystems/simple-mtpfs
 filesystems/squashfs-tools-ng
 filesystems/squashfuse
-finance/nextcloud-cospend
 ftp/curl
 games/linux-steam-utils
 graphics/drm_info
@@ -140,7 +139,6 @@ lang/python3
 lang/python312
 lang/rust
 mail/neomutt
-mail/nextcloud-mail
 mail/thunderbird
 math/gnuplot
 misc/gnu-watch
@@ -170,7 +168,6 @@ multimedia/pwcview
 multimedia/v4l-utils
 multimedia/vlc
 multimedia/webcamd
-net-im/nextcloud-spreed-signaling
 net-im/nextcloud-talk
 net-im/telegram-desktop
 net-im/telegramqml
@@ -218,6 +215,7 @@ net/py-sshuttle
 net/rabbitmq
 net/realtek-re-kmod
 net/remmina
+net/rpki-client
 net/rsync
 net/scapy
 net/socat
@@ -226,6 +224,7 @@ net/tcpdump
 net/tigervnc-viewer
 net/torsocks
 net/udptunnel
+net/v2ray
 net/whois
 net/wifi-firmware-iwlwifi-kmod
 net/wifibox
@@ -254,9 +253,6 @@ security/gopass
 security/keychain
 security/libp11
 security/metasploit
-security/nextcloud-end_to_end_encryption
-security/nextcloud-twofactor_admin
-security/nextcloud-twofactor_webauthn
 security/nmap
 security/oath-toolkit
 security/obfs4proxy-tor
@@ -270,6 +266,7 @@ security/pam_pkcs11
 security/pam_yubico
 security/pcsc-tools
 security/pinentry-gtk2
+security/pinentry-qt5
 security/pinentry-qt6
 security/pinentry-tty
 security/pkcs11-tools
@@ -279,6 +276,7 @@ security/py-certbot
 security/py-certbot-dns-rfc2136
 security/py-htpasswd
 security/py-webauthn
+security/rkhunter
 security/softhsm2
 security/sslproxy
 security/sslsplit
@@ -336,6 +334,7 @@ sysutils/node_exporter
 sysutils/parallel
 sysutils/pass-otp
 sysutils/patchelf
+sysutils/porch
 sysutils/powermon
 sysutils/seatd
 sysutils/smart
@@ -364,14 +363,6 @@ www/firefox
 www/geckodriver
 www/grafana
 www/nextcloud
-www/nextcloud-appointments
-www/nextcloud-calendar
-www/nextcloud-contacts
-www/nextcloud-deck
-www/nextcloud-forms
-www/nextcloud-groupfolders
-www/nextcloud-notes
-www/nextcloud-tasks
 www/nginx
 www/nginx-lite
 www/novnc
@@ -391,6 +382,7 @@ x11-fonts/farsifonts
 x11-fonts/gallant
 x11-fonts/hack-font
 x11-fonts/nerd-fonts
+x11-fonts/powerline-fonts
 x11-fonts/terminus-font
 x11-fonts/urwfonts
 x11-fonts/urwfonts-ttf
