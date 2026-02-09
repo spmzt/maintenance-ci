@@ -276,7 +276,6 @@ security/py-certbot
 security/py-certbot-dns-rfc2136
 security/py-htpasswd
 security/py-webauthn
-security/rkhunter
 security/softhsm2
 security/sslproxy
 security/sslsplit
@@ -382,7 +381,6 @@ x11-fonts/farsifonts
 x11-fonts/gallant
 x11-fonts/hack-font
 x11-fonts/nerd-fonts
-x11-fonts/powerline-fonts
 x11-fonts/terminus-font
 x11-fonts/urwfonts
 x11-fonts/urwfonts-ttf
