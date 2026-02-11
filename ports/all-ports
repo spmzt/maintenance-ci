@@ -210,6 +210,7 @@ net/mtr
 net/openbgpd8
 net/openntpd
 net/openvswitch
+net/pimd
 net/proxychains-ng
 net/py-sshuttle
 net/rabbitmq
