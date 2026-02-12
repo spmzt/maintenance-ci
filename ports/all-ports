@@ -301,7 +301,6 @@ shells/zsh-fast-syntax-highlighting
 shells/zsh-you-should-use
 sysutils/acpi_call
 sysutils/acpica-tools
-sysutils/android-file-transfer-qt5
 sysutils/batterycat
 sysutils/battmond
 sysutils/bhyve-firmware
