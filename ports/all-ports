@@ -356,7 +356,6 @@ textproc/qr
 textproc/xmlto
 textproc/yq
 www/aria2
-www/chromium
 www/fcgiwrap
 www/geckodriver
 www/grafana
