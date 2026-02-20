@@ -358,7 +358,6 @@ textproc/yq
 www/aria2
 www/chromium
 www/fcgiwrap
-www/firefox
 www/geckodriver
 www/grafana
 www/nextcloud
