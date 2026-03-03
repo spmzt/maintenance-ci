@@ -159,8 +159,6 @@ multimedia/libva-utils
 multimedia/libva-vdpau-driver
 multimedia/libvdpau-va-gl
 multimedia/linux-rl9-ffmpeg
-multimedia/mpv
-multimedia/mpvqt
 multimedia/navidrome
 multimedia/obs-studio
 multimedia/obs-text-pthread
