@@ -78,6 +78,7 @@ devel/py-natsort
 devel/py-pip
 devel/py-pipenv
 devel/py-pipx
+devel/py-twisted
 devel/subversion
 devel/universal-ctags
 devel/valgrind
