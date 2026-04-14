@@ -205,6 +205,7 @@ net/libifconfig
 net/linux-rl9-avahi-libs
 net/mpd5
 net/mtr
+net/ndisc6
 net/openbgpd8
 net/openntpd
 net/openvswitch
