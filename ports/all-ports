@@ -32,8 +32,6 @@ comms/soapysdrhackrf
 converters/dos2unix
 databases/linux-rl9-libtracker-sparql
 databases/mysql80-client
-databases/mysql91-client
-databases/mysql91-server
 databases/pecl-redis
 databases/postgresql18-client
 databases/postgresql18-server
@@ -130,7 +128,6 @@ irc/hexchat
 irc/irssi
 java/icedtea-web
 java/openjdk21
-java/openjdk22
 java/openjdk8-jre
 lang/dotnet-host
 lang/gcc
