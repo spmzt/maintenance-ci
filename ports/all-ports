@@ -330,6 +330,7 @@ sysutils/node_exporter
 sysutils/parallel
 sysutils/pass-otp
 sysutils/patchelf
+sysutils/podman
 sysutils/porch
 sysutils/powermon
 sysutils/seatd
