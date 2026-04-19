@@ -56,6 +56,7 @@ devel/evemu
 devel/gccmakedep
 devel/gdb
 devel/gettext
+devel/gh
 devel/git
 devel/git-lfs
 devel/gmake
@@ -304,7 +305,6 @@ sysutils/bhyve-firmware
 sysutils/bhyvemgr
 sysutils/burp
 sysutils/coreutils
-sysutils/cpu-microcode-intel
 sysutils/daemontools
 sysutils/debootstrap
 sysutils/docker
