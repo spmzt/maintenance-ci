@@ -166,6 +166,7 @@ multimedia/v4l-utils
 multimedia/vlc
 multimedia/webcamd
 net-im/nextcloud-talk
+net-im/signal-desktop
 net-im/telegram-desktop
 net-im/telegramqml
 net-im/toot
