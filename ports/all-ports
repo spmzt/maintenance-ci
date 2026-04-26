@@ -372,6 +372,7 @@ www/webkit2-gtk
 x11-drivers/xf86-input-evdev
 x11-drivers/xf86-input-joystick
 x11-drivers/xf86-input-synaptics
+x11-drivers/xlibre-drivers
 x11-fm/dolphin
 x11-fonts/bitstream-vera
 x11-fonts/farsifonts
@@ -383,6 +384,7 @@ x11-fonts/urwfonts
 x11-fonts/urwfonts-ttf
 x11-fonts/webfonts
 x11-fonts/xorg-fonts
+x11-servers/xlibre-server
 x11-servers/xorg-server
 x11-servers/xwayland
 x11-themes/adwaita-qt5
@@ -423,5 +425,6 @@ x11/xcb
 x11/xdm
 x11/xdotool
 x11/xinit
+x11/xlibre
 x11/xorg
 x11/xpra-html5
