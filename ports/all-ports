@@ -197,6 +197,7 @@ net/bird3
 net/bmon
 net/dhcpcd
 net/dpdk
+net/frr10
 net/geoipupdate
 net/gtk-vnc
 net/hostapd
