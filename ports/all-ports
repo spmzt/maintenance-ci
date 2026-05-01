@@ -47,6 +47,7 @@ devel/arduinoOTA
 devel/arm-none-eabi-gcc
 devel/atf
 devel/autotools
+devel/bear
 devel/capnproto
 devel/ccache4
 devel/ccls
@@ -82,6 +83,7 @@ devel/py-pipx
 devel/py-twisted
 devel/subversion
 devel/universal-ctags
+devel/uv
 devel/valgrind
 dns/bind-tools
 dns/bind920
@@ -401,6 +403,7 @@ x11-wm/plasma6-kdecoration
 x11-wm/plasma6-kwin
 x11-wm/plasma6-kwin-x11
 x11-wm/xdgmenumaker
+x11/alacritty
 x11/arandr
 x11/kde
 x11/konsole
