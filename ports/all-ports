@@ -408,6 +408,7 @@ x11/arandr
 x11/kde
 x11/konsole
 x11/libsynaptics
+x11/libxcb
 x11/linux-nvidia-libs
 x11/linux-rl9-libxkbcommon
 x11/linux-rl9-xcb-util
