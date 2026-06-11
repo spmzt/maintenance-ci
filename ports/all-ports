@@ -335,6 +335,7 @@ sysutils/parallel
 sysutils/pass-otp
 sysutils/patchelf
 sysutils/podman
+sysutils/podman-suite
 sysutils/porch
 sysutils/powermon
 sysutils/seatd
