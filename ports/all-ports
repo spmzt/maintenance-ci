@@ -123,7 +123,8 @@ graphics/linux-rl9-cairo-gobject
 graphics/linux-rl9-libepoxy
 graphics/linux-rl9-librsvg2
 graphics/mesa-devel
-graphics/nvidia-drm-66-kmod
+graphics/nvidia-drm-kmod
+graphics/nvidia-drm-612-kmod
 graphics/pecl-imagick
 graphics/qt6-quickeffectmaker
 graphics/xpdf
@@ -145,6 +146,7 @@ math/gnuplot
 misc/gnu-watch
 misc/gollama
 misc/ollama
+misc/openclaw
 misc/ossp-uuid
 misc/trurl
 multimedia/avidemux
@@ -366,11 +368,9 @@ www/nextcloud
 www/nginx
 www/nginx-lite
 www/novnc
-www/onlyoffice-documentserver
 www/py-fastapi
 www/py-python-dotenv
 www/py-uvicorn
-www/ungoogled-chromium
 www/waterfox
 www/webkit2-gtk
 x11-drivers/xf86-input-evdev
