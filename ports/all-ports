@@ -20,7 +20,6 @@ audio/pulseaudio-module-sndio
 audio/pulseaudio-module-xrdp
 audio/pulseaudio-qt
 audio/qjackctl
-audio/virtual_oss
 benchmarks/bonnie++
 benchmarks/iperf3
 cad/kicad
