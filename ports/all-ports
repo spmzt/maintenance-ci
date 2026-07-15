@@ -111,7 +111,7 @@ filesystems/squashfuse
 ftp/curl
 games/linux-steam-utils
 graphics/drm_info
-graphics/drm-kmod
+graphics/drm-latest-kmod
 graphics/feh
 graphics/gimageview
 graphics/gimp
@@ -122,8 +122,6 @@ graphics/linux-rl9-cairo-gobject
 graphics/linux-rl9-libepoxy
 graphics/linux-rl9-librsvg2
 graphics/mesa-devel
-graphics/nvidia-drm-kmod
-graphics/nvidia-drm-612-kmod
 graphics/pecl-imagick
 graphics/qt6-quickeffectmaker
 graphics/xpdf
@@ -410,10 +408,13 @@ x11/konsole
 x11/libsynaptics
 x11/libxcb
 x11/linux-nvidia-libs
+x11/linux-nvidia-libs-devel
 x11/linux-rl9-libxkbcommon
 x11/linux-rl9-xcb-util
 x11/nvidia-driver
+x11/nvidia-driver-devel
 x11/nvidia-kmod
+x11/nvidia-kmod-devel
 x11/nvidia-settings
 x11/nvidia-xconfig
 x11/plasma6-kglobalacceld
