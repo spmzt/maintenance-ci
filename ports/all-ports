@@ -408,13 +408,10 @@ x11/konsole
 x11/libsynaptics
 x11/libxcb
 x11/linux-nvidia-libs
-x11/linux-nvidia-libs-devel
 x11/linux-rl9-libxkbcommon
 x11/linux-rl9-xcb-util
 x11/nvidia-driver
-x11/nvidia-driver-devel
 x11/nvidia-kmod
-x11/nvidia-kmod-devel
 x11/nvidia-settings
 x11/nvidia-xconfig
 x11/plasma6-kglobalacceld
