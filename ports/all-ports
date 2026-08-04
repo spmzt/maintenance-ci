@@ -186,7 +186,6 @@ net-mgmt/prometheus2
 net-mgmt/py-gstat_exporter
 net-mgmt/rtrlib
 net-mgmt/smartctl_exporter
-net-p2p/jackett
 net-p2p/lidarr
 net-p2p/prowlarr
 net-p2p/radarr
