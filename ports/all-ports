@@ -122,6 +122,7 @@ graphics/linux-rl9-cairo-gobject
 graphics/linux-rl9-libepoxy
 graphics/linux-rl9-librsvg2
 graphics/mesa-devel
+graphics/nvidia-drm-latest-kmod-580
 graphics/pecl-imagick
 graphics/qt6-quickeffectmaker
 graphics/xpdf
@@ -409,6 +410,7 @@ x11/linux-nvidia-libs
 x11/linux-rl9-libxkbcommon
 x11/linux-rl9-xcb-util
 x11/nvidia-driver
+x11/nvidia-driver-580
 x11/nvidia-kmod
 x11/nvidia-settings
 x11/nvidia-xconfig
