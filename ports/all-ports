@@ -37,6 +37,7 @@ devel/git
 devel/git-lfs
 devel/gmake
 devel/jenkins
+devel/libccid
 devel/libev
 devel/linux-rl9-libevent
 devel/llvm21
@@ -47,7 +48,6 @@ devel/p5-Module-CoreList
 devel/pcl
 devel/pcsc-lite
 devel/protobuf-c
-devel/py-natsort
 devel/py-pip
 devel/py-twisted
 devel/subversion
@@ -80,7 +80,6 @@ graphics/drm-latest-kmod
 graphics/gimp
 graphics/gpu-firmware-intel-kmod
 graphics/gpu-firmware-kmod
-graphics/krita
 graphics/mesa-devel
 graphics/nvidia-drm-latest-kmod-580
 graphics/pecl-imagick
@@ -94,15 +93,11 @@ lang/gcc
 lang/go
 lang/python3
 lang/rust
-mail/neomutt
 mail/thunderbird
-math/gnuplot
 misc/gnu-watch
 misc/gollama
 misc/ollama
 misc/openclaw
-misc/ossp-uuid
-misc/trurl
 multimedia/ffmpeg
 multimedia/gstreamer1-plugins-all
 multimedia/jellyfin
@@ -117,8 +112,6 @@ multimedia/obs-studio
 multimedia/pwcview
 multimedia/v4l-utils
 multimedia/vlc
-multimedia/webcamd
-net-im/nextcloud-talk
 net-im/telegram-desktop
 net-mgmt/adguard-exporter
 net-mgmt/aircrack-ng
@@ -126,7 +119,6 @@ net-mgmt/bgpq3
 net-mgmt/blackbox_exporter
 net-mgmt/geom-exporter
 net-mgmt/iftop
-net-mgmt/ipcalc
 net-mgmt/nfdump
 net-mgmt/nfsen
 net-mgmt/ping_exporter
