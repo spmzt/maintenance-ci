@@ -40,7 +40,6 @@ devel/jenkins
 devel/libccid
 devel/libev
 devel/linux-rl9-libevent
-devel/llvm21
 devel/msbuild
 devel/ninja
 devel/opencl
