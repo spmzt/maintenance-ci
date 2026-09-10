@@ -2,8 +2,6 @@ archivers/lzlib
 archivers/rar
 archivers/xarchive
 archivers/xarchiver
-audio/dsbmixer
-audio/gtk-mixer
 audio/jack
 audio/mixertui
 audio/musicpd
@@ -12,7 +10,6 @@ audio/plasma6-oxygen-sounds
 audio/portaudio
 audio/pulseaudio
 audio/qjackctl
-benchmarks/bonnie++
 benchmarks/iperf3
 comms/hcidump
 comms/iwmbt-firmware
@@ -40,19 +37,11 @@ devel/jenkins
 devel/libccid
 devel/libev
 devel/linux-rl9-libevent
-devel/msbuild
-devel/ninja
-devel/opencl
 devel/p5-Module-CoreList
-devel/pcl
 devel/pcsc-lite
-devel/protobuf-c
 devel/py-pip
 devel/py-twisted
-devel/subversion
 devel/universal-ctags
-devel/uv
-devel/valgrind
 dns/bind-tools
 dns/bind920
 dns/unbound
@@ -79,10 +68,8 @@ graphics/drm-latest-kmod
 graphics/gimp
 graphics/gpu-firmware-intel-kmod
 graphics/gpu-firmware-kmod
-graphics/mesa-devel
 graphics/nvidia-drm-latest-kmod-580
 graphics/pecl-imagick
-graphics/qt6-quickeffectmaker
 irc/hexchat
 irc/irssi
 java/openjdk21
@@ -134,7 +121,6 @@ net/bird3
 net/bmon
 net/dhcpcd
 net/dpdk
-net/frr10
 net/geoipupdate
 net/hostapd
 net/hping3
@@ -142,9 +128,7 @@ net/libifconfig
 net/mpd5
 net/mtr
 net/ndisc6
-net/openbgpd8
 net/openntpd
-net/openvswitch
 net/pimd
 net/proxychains-ng
 net/py-sshuttle
@@ -177,13 +161,11 @@ ports-mgmt/poudriere-devel
 print/texinfo
 security/fprintd
 security/gnupg
-security/gnupg-pkcs11-scd
 security/gopass
 security/keychain
 security/libp11
 security/nmap
 security/obfs4proxy-tor
-security/openconnect
 security/opensc
 security/openssh-askpass
 security/openssl-agent
@@ -191,12 +173,9 @@ security/openvpn
 security/pam_pkcs11
 security/pam_yubico
 security/pcsc-tools
-security/pinentry-gtk2
-security/pinentry-qt6
 security/pinentry-tty
 security/pkcs11-tools
 security/plasma6-kscreenlocker
-security/pssh
 security/py-certbot
 security/py-certbot-dns-rfc2136
 security/py-htpasswd
@@ -211,7 +190,6 @@ security/tpm2-tools
 security/u2f-devd
 security/yubico-piv-tool
 security/yubikey-agent
-security/yubikey-personalization-gui
 security/zaproxy
 shells/bash
 shells/git-prompt.zsh
@@ -243,7 +221,6 @@ sysutils/lsblk
 sysutils/lscpu
 sysutils/node_exporter
 sysutils/pass-otp
-sysutils/podman
 sysutils/podman-suite
 sysutils/seatd
 sysutils/smart
@@ -252,7 +229,6 @@ sysutils/syslog-ng
 sysutils/tmux
 sysutils/vm-bhyve
 sysutils/vm-bhyve-zcomp
-textproc/aha
 textproc/fzf
 textproc/groff
 textproc/gsed
