@@ -87,7 +87,6 @@ irc/hexchat
 irc/irssi
 java/openjdk21
 java/openjdk8-jre
-lang/dotnet-host
 lang/gcc
 lang/go
 lang/python3
