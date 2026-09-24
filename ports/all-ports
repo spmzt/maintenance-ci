@@ -6,7 +6,6 @@ audio/jack
 audio/mixertui
 audio/musicpd
 audio/ncmpc
-audio/plasma6-oxygen-sounds
 audio/portaudio
 audio/pulseaudio
 audio/qjackctl
@@ -175,7 +174,6 @@ security/pam_yubico
 security/pcsc-tools
 security/pinentry-tty
 security/pkcs11-tools
-security/plasma6-kscreenlocker
 security/py-certbot
 security/py-certbot-dns-rfc2136
 security/py-htpasswd
@@ -271,17 +269,12 @@ x11-servers/xlibre-server
 x11-servers/xorg-server
 x11-servers/xwayland
 x11-themes/adwaita-qt5
-x11-themes/plasma6-breeze
-x11-themes/plasma6-kde-gtk-config
 x11-toolkits/gtkglext
 x11-toolkits/qt5-quickcontrols2
 x11-toolkits/qt6-charts
-x11-wm/plasma6-kdecoration
-x11-wm/plasma6-kwin
 x11-wm/xdgmenumaker
 x11/alacritty
 x11/arandr
-x11/kde
 x11/konsole
 x11/libsynaptics
 x11/libxcb
@@ -293,11 +286,7 @@ x11/nvidia-driver-580
 x11/nvidia-kmod
 x11/nvidia-settings
 x11/nvidia-xconfig
-x11/plasma6-kglobalacceld
-x11/plasma6-layer-shell-qt
-x11/plasma6-libplasma
-x11/plasma6-plasma-activities
-x11/plasma6-plasma-activities-stats
+x11/plasma6-plasma
 x11/sddm
 x11/wmctrl-fork
 x11/xauth
