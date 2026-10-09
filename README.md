@@ -1,16 +1,17 @@
 # FreeBSD Maintenance CI
 
-There are three piplines here.
+There are three pipelines here.
 
-## Host
+## pkgbase
 
-Builds and upgrades the host from source.
+Pulls `/usr/src`, rebuilds the pkgbase repository with `poudriere jail -u`,
+snapshots the jails dataset and upgrades the basejail from the new packages.
 
 ## Jail
 
-Builds and upgrades the basejail and other jails from source.
+Builds a minimal FreeBSD container image from pkgbase with buildah and pushes
+it to the registry.
 
 ## Ports
 
 Triggers poudriere bulk
-

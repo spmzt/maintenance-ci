@@ -1,3 +1,5 @@
+// Build a minimal FreeBSD container image from pkgbase and push it to the
+// registry as both :latest and :YYYY-MM-DD.
 pipeline {
 	agent {
 		label 'host && freebsd'
@@ -5,32 +7,38 @@ pipeline {
 
 	parameters {
 		string(name: 'registry', defaultValue: 'zot.spmzt.net',
-				description: 'Set your registry URL')
+				description: 'Container registry to push to')
+		string(name: 'image', defaultValue: 'freebsd-base',
+				description: 'Image name')
+	}
+
+	environment {
+		IMAGE = "${params.registry}/${params.image}"
 	}
 
 	stages {
-		stage("buildah_from_scratch") {
+		stage('build') {
 			steps {
 				sh '''
-					export HASH="$(mdo buildah from scratch)"
-					export MOUNT="$(mdo buildah mount ${HASH})"
-					mdo pkg -r ${MOUNT} install -y FreeBSD-set-minimal-jail FreeBSD-set-optional-jail
-					mdo pkg -r ${MOUNT} install -y pkg zsh zsh-autosuggestions zsh-completions vim-tiny
-					mdo buildah umount ${HASH}
-					mdo buildah commit ${HASH} freebsd-base:latest
+					CTR=$(mdo buildah from scratch)
+					trap 'mdo buildah rm "$CTR"' EXIT
+					MNT=$(mdo buildah mount "$CTR")
+					mdo pkg -r "$MNT" install -y FreeBSD-set-minimal-jail FreeBSD-set-optional-jail
+					mdo pkg -r "$MNT" install -y pkg zsh zsh-autosuggestions zsh-completions vim-tiny
+					mdo rm -rf "$MNT"/var/cache/pkg
+					mdo buildah umount "$CTR"
+					mdo buildah commit "$CTR" "$IMAGE:latest"
 				'''
 			}
 		}
-		stage("tag") {
+		stage('push') {
 			steps {
-				sh "mdo podman tag freebsd-base:latest ${params.registry}/freebsd-base:latest"
-				sh "mdo podman tag freebsd-base:latest ${params.registry}/freebsd-base:`date -I`"
-			}
-		}
-		stage("push") {
-			steps {
-				sh "mdo podman push ${params.registry}/freebsd-base:latest"
-				sh "mdo podman push ${params.registry}/freebsd-base:`date -I`"
+				sh '''
+					TAG=$(date -I)
+					mdo podman tag "$IMAGE:latest" "$IMAGE:$TAG"
+					mdo podman push "$IMAGE:latest"
+					mdo podman push "$IMAGE:$TAG"
+				'''
 			}
 		}
 	}

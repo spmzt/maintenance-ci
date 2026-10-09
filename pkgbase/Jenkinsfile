@@ -1,33 +1,45 @@
+// Rebuild the pkgbase repository from /usr/src with poudriere, then upgrade
+// the basejail from it.  A ZFS snapshot of the jails is taken first so a bad
+// upgrade can be rolled back.
 pipeline {
 	agent {
 		label 'host && freebsd'
 	}
 
 	parameters {
+		string(name: 'jail', defaultValue: 'FreeBSD:16:amd64',
+				description: 'Poudriere jail that builds the pkgbase repository')
+		string(name: 'kernconf', defaultValue: 'MYKERNEL',
+				description: 'Kernel configuration to build')
 		string(name: 'basejail', defaultValue: '/usr/jails/basejail',
-				description: 'Set it to your base jail directory')
+				description: 'Base jail directory')
 		string(name: 'zfsds', defaultValue: 'tank/jails',
-				description: 'Set it to the zfs dataset that containes your jails')
+				description: 'ZFS dataset that contains your jails')
 		booleanParam(name: 'skip_pull', defaultValue: false,
-				description: 'Set to true to skip the git pull stage')
+				description: 'Skip the git pull stage')
 		string(name: 'jobs', defaultValue: '24',
-				description: 'Set to your desired concurrent jobs')
+				description: 'Number of concurrent build jobs')
 	}
+
 	stages {
-		stage("pull") {
-			when { expression { params.skip_pull != true } }
+		stage('pull') {
+			when { expression { !params.skip_pull } }
 			steps {
 				sh 'mdo git -C /usr/src pull'
 			}
 		}
-		stage("poudriere") {
+		stage('pkgbase') {
 			steps {
-				sh 'mdo poudriere jail -u -jFreeBSD:16:amd64 -K GENERIC-NODEBUG -B -b'
+				sh "mdo poudriere jail -u -j ${params.jail} -K ${params.kernconf} -b -J ${params.jobs}"
 			}
 		}
-		stage("basejail") {
+		stage('snapshot') {
 			steps {
-				sh "mdo zfs snapshot -r ${params.zfsds}@`date -I`-${currentBuild.number}"
+				sh "mdo zfs snapshot -r ${params.zfsds}@\$(date -I)-${env.BUILD_NUMBER}"
+			}
+		}
+		stage('basejail') {
+			steps {
 				sh "mdo pkg -c ${params.basejail} upgrade -y"
 			}
 		}
