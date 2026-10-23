@@ -1,6 +1,7 @@
 // Rebuild the pkgbase repository from /usr/src with poudriere, then upgrade
 // the basejail from it.  A ZFS snapshot of the jails is taken first so a bad
-// upgrade can be rolled back.
+// upgrade can be rolled back; once the upgrade went well, the job's own
+// snapshots past the newest keep_snapshots are destroyed.
 pipeline {
 	agent {
 		label 'host && freebsd'
@@ -19,13 +20,25 @@ pipeline {
 				description: 'Skip the git pull stage')
 		string(name: 'jobs', defaultValue: '24',
 				description: 'Number of concurrent build jobs')
+		string(name: 'keep_snapshots', defaultValue: '3',
+				description: 'Snapshots of this job kept, the newest; older ones are destroyed')
 	}
 
 	stages {
 		stage('pull') {
 			when { expression { !params.skip_pull } }
 			steps {
-				sh 'mdo git -C /usr/src pull'
+				// A tree with changes of its own is somebody's work:
+				// built as it is, never stashed or reset.
+				sh '''
+					if mdo git -C /usr/src diff --quiet &&
+					    mdo git -C /usr/src diff --cached --quiet; then
+						mdo git -C /usr/src pull
+					else
+						echo "/usr/src has local changes: not pulled, built as it is"
+						mdo git -C /usr/src status --short
+					fi
+				'''
 			}
 		}
 		stage('pkgbase') {
@@ -41,6 +54,22 @@ pipeline {
 		stage('basejail') {
 			steps {
 				sh "mdo pkg -c ${params.basejail} upgrade -y"
+			}
+		}
+		stage('prune') {
+			// Only this job's snapshots (YYYY-MM-DD-<build>), oldest
+			// first, all but the newest keep_snapshots.
+			steps {
+				sh '''
+					mdo zfs list -H -t snapshot -o name -s creation -d 1 "$zfsds" |
+					    sed -n "s|^$zfsds@||p" |
+					    grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]+$' |
+					    awk -v k="$keep_snapshots" '{ s[NR] = $0 } END { for (i = 1; i <= NR - k; i++) print s[i] }' |
+					    while read -r snap; do
+						echo "destroying $zfsds@$snap"
+						mdo zfs destroy -r "$zfsds@$snap"
+					    done
+				'''
 			}
 		}
 	}

@@ -15,6 +15,15 @@ pipeline {
 						sh "mdo poudriere bulk -jFreeBSD:16:amd64 -b latest -S -J${params.jobs}:4 -f ports/all-ports"
 					}
 				}
+				stage("clean") {
+					// Packages no longer in the list, logs older than
+					// 30 days, distfiles no port of the list uses.
+					steps {
+						sh "mdo poudriere pkgclean -y -j FreeBSD:16:amd64 -f ports/all-ports"
+						sh "mdo poudriere logclean -y -j FreeBSD:16:amd64 30"
+						sh "mdo poudriere distclean -y -f ports/all-ports"
+					}
+				}
 			}
 		}
 	}

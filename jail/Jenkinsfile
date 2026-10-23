@@ -41,5 +41,15 @@ pipeline {
 				'''
 			}
 		}
+		stage('clean') {
+			// The dated tag lives in the registry; here only :latest is
+			// kept, and the images nothing tags any more go.
+			steps {
+				sh '''
+					mdo podman rmi "$IMAGE:$(date -I)" || true
+					mdo podman image prune -f
+				'''
+			}
+		}
 	}
 }
