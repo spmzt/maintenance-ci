@@ -7,7 +7,7 @@ There are three pipelines here.
 Pulls `/usr/src` (not when the tree has local changes: it is built as it
 is), rebuilds the pkgbase repository with `poudriere jail -u`, snapshots the
 jails dataset, upgrades the basejail from the new packages, and destroys its
-own snapshots past the newest `keep_snapshots` (3).
+own snapshots but the one it just took (`keep_snapshots`, 1).
 
 ## Jail
 

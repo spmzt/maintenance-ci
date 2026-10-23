@@ -1,7 +1,7 @@
 // Rebuild the pkgbase repository from /usr/src with poudriere, then upgrade
 // the basejail from it.  A ZFS snapshot of the jails is taken first so a bad
 // upgrade can be rolled back; once the upgrade went well, the job's own
-// snapshots past the newest keep_snapshots are destroyed.
+// snapshots past the newest keep_snapshots (1: this run's) are destroyed.
 pipeline {
 	agent {
 		label 'host && freebsd'
@@ -20,7 +20,7 @@ pipeline {
 				description: 'Skip the git pull stage')
 		string(name: 'jobs', defaultValue: '24',
 				description: 'Number of concurrent build jobs')
-		string(name: 'keep_snapshots', defaultValue: '3',
+		string(name: 'keep_snapshots', defaultValue: '1',
 				description: 'Snapshots of this job kept, the newest; older ones are destroyed')
 	}
 
