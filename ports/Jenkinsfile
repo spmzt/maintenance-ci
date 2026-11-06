@@ -6,10 +6,38 @@ pipeline {
 	parameters {
 		string(name: 'jobs', defaultValue: '4',
 				description: 'Set to your desired concurrent jobs')
+		booleanParam(name: 'official_ports', defaultValue: true,
+				description: 'Build on the ports commit of the official package set, so -b latest fetches every package without custom options')
 	}
 	stages {
 		stage("poudriere") {
 			stages {
+				stage("ports") {
+					// The ports commit the official package set was built
+					// from: on a newer tree a bumped low-level port (expat,
+					// pkg) stops -b latest from fetching everything above
+					// it, so those get built here.  Without official_ports,
+					// the newest commit.
+					steps {
+						script {
+							if (params.official_ports) {
+								sh '''
+									set -eu
+									hash=$(fetch -qo - https://pkg.FreeBSD.org/FreeBSD:16:amd64/latest/packagesite.pkg |
+									    tar -xOf - packagesite.yaml |
+									    grep -oE '"ports_top_git_hash":"[0-9a-f]{40}"' |
+									    sort | uniq -c | sort -rn | head -1 | cut -d'"' -f4)
+									test -n "$hash"
+									mdo git -C /poudriere/ports/default fetch -q origin
+									mdo git -C /poudriere/ports/default checkout -q -B main "$hash"
+									mdo git -C /poudriere/ports/default log -1 --format='ports tree at %h (%cs), as the official packages'
+								'''
+							} else {
+								sh "mdo poudriere ports -u -p default"
+							}
+						}
+					}
+				}
 				stage("bulk") {
 					steps {
 						sh "mdo poudriere bulk -jFreeBSD:16:amd64 -b latest -S -J${params.jobs}:4 -f ports/all-ports"
